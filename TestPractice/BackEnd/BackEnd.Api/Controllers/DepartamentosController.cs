@@ -18,6 +18,7 @@
         [HttpGet]
         public IActionResult Get()
         {
+             
             return Ok(departamentoService.GetDepartamentos());
         }
     }
