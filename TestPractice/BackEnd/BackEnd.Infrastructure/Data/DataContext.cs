@@ -15,10 +15,7 @@ namespace BackEnd.Infrastructure.Data
 
         public virtual DbSet<Departamento> Departamentos { get; set; }
 
-        public virtual DbSet<Cargo> Cargos { get; set; }
-
-        public virtual DbSet<Genero> Generos { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         { 
             //USAMOS REFLECTION PARA AGREGAR TODAS LAS CONFIGURACIONES DESDE EL ENSAMBLADO

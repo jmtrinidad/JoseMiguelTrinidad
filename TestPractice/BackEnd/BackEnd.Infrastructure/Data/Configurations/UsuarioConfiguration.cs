@@ -19,13 +19,13 @@
             builder.Property(e => e.Nombres)
                 .IsRequired()
                 .HasColumnName("Nombres")
-                .HasMaxLength(100)
+                .HasMaxLength(50)
                 .IsUnicode(false);
 
             builder.Property(e => e.Apellidos)
                .IsRequired()
                .HasColumnName("Apellidos")
-               .HasMaxLength(100)
+               .HasMaxLength(50)
                .IsUnicode(false);
 
             builder.Property(e => e.Cedula)
@@ -34,24 +34,32 @@
                .HasMaxLength(15)
                .IsUnicode(false);
 
-            builder.Property(e => e.GeneroId)
-               .HasColumnName("GeneroId");
+            builder.Property(e => e.Genero)
+                .IsRequired()
+                .HasColumnName("Genero")
+                .HasMaxLength(20)
+                .IsUnicode(false);
 
-            builder.Property(e => e.Fecha_Nac)
-                .HasColumnName("Fecha_Nac")
+            builder.Property(e => e.Fecha_Nacimiento)
+                .HasColumnName("Fecha_Nacimiento")
                 .HasColumnType("datetime");
 
             builder.Property(e => e.DepartamentoId)
                 .HasColumnName("DepartamentoId");
 
+            builder.Property(e => e.Cargo)
+               .IsRequired()
+               .HasColumnName("Cargo")
+               .HasMaxLength(50)
+               .IsUnicode(false);
+
             builder.Property(e => e.Supervisor_Inmediato)
                .IsRequired()
                .HasColumnName("Supervisor_Inmediato")
-               .HasMaxLength(100)
+               .HasMaxLength(50)
                .IsUnicode(false);
 
-            builder.Property(e => e.CargoId)
-               .HasColumnName("CargoId");
+            
 
         }
     }

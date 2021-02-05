@@ -1,4 +1,7 @@
+using BackEnd.Core.Interfaces;
+using BackEnd.Core.Services;
 using BackEnd.Infrastructure.Data;
+using BackEnd.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +43,16 @@ namespace BackEnd.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EJERCICIO PRÁCTICO", Version = "v1" });
             });
+            //DE ESTA MANERA AGREGAMOS LA LOS REPOSITORIOS GENERICOS, OSEA, EL REPOSITORIO BASE
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
+            services.AddTransient<IDepartamentoRepository, DepartamentoRepository>();
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+            services.AddTransient<IDepartamentoService, DepartamentoService>();
+            services.AddTransient<IUsuarioService, UsuarioService>();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
