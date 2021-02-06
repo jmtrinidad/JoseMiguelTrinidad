@@ -18,7 +18,7 @@ export class UsuarioComponent implements OnInit {
     private _formBuilder: FormBuilder) {
 
       this.usuarioForm=_formBuilder.group({
-        nombres: [''],
+        nombres: ['', Validators.required],
         apellidos:['', Validators.required],
         genero:  ['', Validators.required], 
         cedula:  ['', Validators.required],
