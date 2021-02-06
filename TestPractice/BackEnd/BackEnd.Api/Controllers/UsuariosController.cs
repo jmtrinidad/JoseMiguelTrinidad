@@ -1,5 +1,6 @@
 ﻿namespace BackEnd.Api.Controllers
 {
+    using BackEnd.Api.Response;
     using BackEnd.Core.DTOs;
     using BackEnd.Core.Interfaces;
     using Microsoft.AspNetCore.Mvc;
@@ -26,11 +27,22 @@
         public  IActionResult Post(UsuarioDto usuarioDto)
         {
             var result= _usuarioService.InsertUsuarioAsync(usuarioDto);
+            ApiResponse<UsuarioDto> response;
             if (!result)
             {
-                return NotFound();
+                response = new ApiResponse<UsuarioDto>
+                {
+                    IsSuccess = false,
+
+                };
+                return Ok(response);
             }
-            return Ok("Usuario Creado con exito.!");
+            response = new ApiResponse<UsuarioDto>
+            {
+                IsSuccess = true,
+                Result=usuarioDto,
+            };
+            return Ok(response);
 
         }
     }

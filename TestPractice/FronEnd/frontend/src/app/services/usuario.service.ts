@@ -8,13 +8,13 @@ import { Usuario } from '../models/usuario';
 })
 export class UsuarioService {
 
-  constructor(private _httpClient:HttpClient) { }
+  constructor(private _httpClient: HttpClient) { }
 
   api_url: string = 'http://localhost:56923';
 
-  registrar(usuario:any): Observable<boolean> {
+  registrar(usuario: any): Observable<any> {
     console.log(usuario);
-    return this._httpClient.post<boolean>(`${this.api_url}/api/Usuarios`, {
+    return this._httpClient.post<any>(`${this.api_url}/api/Usuarios`, {
       nombres: usuario.nombres,
       apellidos: usuario.apellidos,
       genero: usuario.genero,

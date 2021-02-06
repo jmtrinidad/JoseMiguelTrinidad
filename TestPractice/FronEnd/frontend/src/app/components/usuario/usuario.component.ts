@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Departamento } from 'src/app/models/departamento';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
 import { DepartamentoService } from 'src/app/services/departamento.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -36,9 +35,11 @@ export class UsuarioComponent implements OnInit {
    
   } 
      registrar(values){
-       this._usuarioService.registrar(values).subscribe();
-     }
-
- 
-
+       this._usuarioService.registrar(values).subscribe(resp=>{
+         if(resp.isSuccess){
+           alert('Registro ingresado')
+           console.log(resp);
+         }
+       });
+     } 
 }
