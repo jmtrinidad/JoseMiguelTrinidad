@@ -5,16 +5,22 @@
     using BackEnd.Infrastructure.Data;
     using Microsoft.Extensions.Configuration;
     using System.Data.SqlClient;
+    using System.Threading.Tasks;
 
     public class UsuarioRepository : BaseRepository<Usuario>, IUsuarioRepository
     {
-        public UsuarioRepository(DataContext context, IConfiguration configuration) : base(context,configuration)
+        private readonly DataContext _context;
+
+        public UsuarioRepository(DataContext context, IConfiguration configuration) : base(context, configuration)
         {
+            this._context = context;
         }
 
-        public void InsertWithAdot(Usuario usuario)
+
+
+        public bool InsertWithAdot(Usuario usuario)
         {
-            using (var conection= new SqlConnection(_conectionString))
+            using (var conection = new SqlConnection(_conectionString))
             {
                 conection.Open();
                 var query = @$"INSERT INTO Usuarios(Nombres,Apellidos,Genero,Cedula,Fecha_Nacimiento,DepartamentoId,Cargo,Supervisor_Inmediato)
@@ -34,9 +40,9 @@
                     command.Parameters.AddWithValue($"@{nameof(Usuario.Cargo)}", usuario.Cargo);
                     command.Parameters.AddWithValue($"@{nameof(Usuario.Supervisor_Inmediato)}", usuario.Supervisor_Inmediato);
 
-                    command.ExecuteNonQuery();
+                    return command.ExecuteNonQuery() > 0 ? true : false;
                 }
-               
+
             }
         }
     }

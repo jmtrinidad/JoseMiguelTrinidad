@@ -9,7 +9,7 @@
         Task<bool> DeleteUsuarioAsync(int id);
         Task<UsuarioDto> GetUsuariosByIdAsync(int id);
         IEnumerable<UsuarioDto> GetUsuarios();
-        Task InsertUsuarioAsync(UsuarioDto usuarioDto);
+        bool InsertUsuarioAsync(UsuarioDto usuarioDto);
         Task<bool> UpdateUsuarioAsync(UsuarioDto usuarioDto);
     }
 }

@@ -34,11 +34,10 @@
             throw new System.NotImplementedException();
         }
 
-        public async Task InsertUsuarioAsync(UsuarioDto usuarioDto)
+        public bool InsertUsuarioAsync(UsuarioDto usuarioDto)
         {
-            var usuario =ConvertToUsuario(usuarioDto);
-              _usuarioRepository.InsertWithAdot(usuario);
-            
+            var usuario =ConvertToUsuario(usuarioDto); 
+            return  _usuarioRepository.InsertWithAdot(usuario); 
         }
 
         private Usuario ConvertToUsuario(UsuarioDto usuarioDto)

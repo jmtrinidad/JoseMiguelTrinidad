@@ -23,10 +23,15 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(UsuarioDto usuarioDto)
+        public  IActionResult Post(UsuarioDto usuarioDto)
         {
-            await _usuarioService.InsertUsuarioAsync(usuarioDto);
-            return Ok();
+            var result= _usuarioService.InsertUsuarioAsync(usuarioDto);
+            if (!result)
+            {
+                return NotFound();
+            }
+            return Ok("Usuario Creado con exito.!");
+
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿namespace BackEnd.Core.Interfaces
 {
     using BackEnd.Core.Entities;
+    using System.Threading.Tasks;
+
     public  interface IUsuarioRepository:IBaseRepository<Usuario>
     {
-        void InsertWithAdot(Usuario usuario);
+        bool InsertWithAdot(Usuario usuario); 
     }
 }
