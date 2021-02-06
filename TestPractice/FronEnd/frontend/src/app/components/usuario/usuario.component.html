@@ -29,9 +29,8 @@
         </div>
         <div class="col-md-3">
             <label for="validationCustom04" class="form-label">Departamento</label>
-            <select class="form-select" formControlName="genero2">
-                <option selected disabled value="">Choose...</option>
-                <option  value="Masculino" >Masculino</option>
+            <select class="form-select" formControlName="departamentoId"> 
+                <option  *ngFor="let depart of departamentos" value="{{depart.id}}" >{{ depart.nombre}}</option>
             </select> 
         </div>
         <div class="col-md-3">

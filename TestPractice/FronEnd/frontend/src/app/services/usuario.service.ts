@@ -12,7 +12,17 @@ export class UsuarioService {
 
   api_url: string = 'http://localhost:56923';
 
-  registrar(usuario:Usuario): Observable<boolean> {
-    return this._httpClient.post<boolean>(`${this.api_url}/api/Usuarios`, usuario)
+  registrar(usuario:any): Observable<boolean> {
+    console.log(usuario);
+    return this._httpClient.post<boolean>(`${this.api_url}/api/Usuarios`, {
+      nombres: usuario.nombres,
+      apellidos: usuario.apellidos,
+      genero: usuario.genero,
+      cedula: usuario.cedula,
+      fecha_Nacimiento: usuario.fecha_Nacimiento,
+      departamentoId: usuario.departamentoId,
+      cargo: usuario.cargo,
+      supervisor_Inmediato: usuario.supervisor_Inmediato
+    })
   }
 }

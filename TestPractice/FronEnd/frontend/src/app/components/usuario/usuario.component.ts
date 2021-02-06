@@ -21,8 +21,7 @@ export class UsuarioComponent implements OnInit {
       this.usuarioForm=_formBuilder.group({
         nombres: [''],
         apellidos:['', Validators.required],
-        genero:  ['', Validators.required],
-        genero2:  ['', Validators.required],
+        genero:  ['', Validators.required], 
         cedula:  ['', Validators.required],
         fecha_Nacimiento:  ['', Validators.required],
         departamentoId:  ['', Validators.required],
@@ -32,15 +31,12 @@ export class UsuarioComponent implements OnInit {
      }
   ngOnInit(): void {
     this._departamentoService.getDepartamentos().subscribe(response =>{
-      console.log(response);
+      this.departamentos=response 
     });
    
-  }
-
-
-
+  } 
      registrar(values){
-       console.log(values);
+       this._usuarioService.registrar(values).subscribe();
      }
 
  

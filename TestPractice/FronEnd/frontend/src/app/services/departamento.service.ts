@@ -13,7 +13,7 @@ export class DepartamentoService {
 
   api_url: string = 'http://localhost:56923';
 
-  getDepartamentos(): Observable<Departamento> {
-    return this._httpClient.get<Departamento>(`${this.api_url}/api/Departamentos`)
+  getDepartamentos(): Observable<any> {
+    return this._httpClient.get<any>(`${this.api_url}/api/Departamentos`)
   }
 }
