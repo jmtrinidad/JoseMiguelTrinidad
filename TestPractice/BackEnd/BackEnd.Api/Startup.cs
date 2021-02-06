@@ -2,7 +2,9 @@ using BackEnd.Core.Helpers;
 using BackEnd.Core.Interfaces;
 using BackEnd.Core.Services;
 using BackEnd.Infrastructure.Data;
+using BackEnd.Infrastructure.Filter;
 using BackEnd.Infrastructure.Repositories;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -53,6 +55,7 @@ namespace BackEnd.Api
                    .EnableSensitiveDataLogging();
             });
 
+           
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EJERCICIO PRÁCTICO", Version = "v1" });
@@ -66,7 +69,14 @@ namespace BackEnd.Api
             services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IConvertHelper, ConvertHelper>();
 
-
+            services.AddMvc(option =>
+            {
+                option.Filters.Add<ValidationFilter>();
+                // CON ESTE LINEA REGISTRAMOS NUESTROS FluentValidator
+            }).AddFluentValidation(option =>
+            {
+                option.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+            });
 
 
         }

@@ -13,7 +13,7 @@
         public string Cedula { get; set; } 
 
 
-        public DateTime Fecha_Nacimiento { get; set; }
+        public DateTime? Fecha_Nacimiento { get; set; }
 
         public int DepartamentoId { get; set; }
 

@@ -5,15 +5,14 @@
     using BackEnd.Infrastructure.Data;
     using Microsoft.Extensions.Configuration;
     using System.Data.SqlClient;
-    using System.Threading.Tasks;
 
     public class UsuarioRepository : BaseRepository<Usuario>, IUsuarioRepository
     {
-        private readonly DataContext _context;
+        
 
         public UsuarioRepository(DataContext context, IConfiguration configuration) : base(context, configuration)
         {
-            this._context = context;
+             
         }
 
 

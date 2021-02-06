@@ -75,7 +75,7 @@
                     Cargo = usuario.Cargo,
                     Cedula = usuario.Cedula,
                     DepartamentoId = usuario.DepartamentoId,
-                    Fecha_Nacimiento = usuario.Fecha_Nacimiento,
+                    Fecha_Nacimiento = usuario.Fecha_Nacimiento.Value,
                     Genero = usuario.Genero,
                     Id = usuario.Id,
                     Nombres = usuario.Nombres,
