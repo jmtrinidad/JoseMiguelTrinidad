@@ -1,0 +1,51 @@
+<div class="container"> 
+       <h1>FORMULARIO AGREGAR USUARIO</h1>
+    <form [formGroup]="usuarioForm" (ngSubmit)="registrar(usuarioForm.value)" class="row g-3 needs-validation">
+        <div class="col-md-3">
+            <label for="validationCustom01" class="form-label">Nombres</label>
+            <input type="text" formControlName="nombres" class="form-control">
+           
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom02" class="form-label">Apellidos</label>
+            <input type="text" formControlName="apellidos" class="form-control"> 
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom03" class="form-label">Cedula</label>
+            <input type="text"  formControlName="cedula" class="form-control"> 
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustomUsername" class="form-label">Genero</label>
+            <select formControlName="genero" class="form-select" id="validationCustom04" required>
+                <option selected disabled value="">Seleccionar</option> 
+                <option  value="Masculino">Masculino</option> 
+                <option  value="Femenino">Femenino</option> 
+                <option  value="Otro">Otro</option> 
+            </select>
+        </div> 
+        <div class="col-md-3">
+            <label for="validationCustom03" class="form-label">Fecha Nac</label>
+            <input type="date" formControlName="fecha_Nacimiento" class="form-control"> 
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom04" class="form-label">Departamento</label>
+            <select class="form-select" formControlName="genero2">
+                <option selected disabled value="">Choose...</option>
+                <option  value="Masculino" >Masculino</option>
+            </select> 
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom05" class="form-label">Cargo</label>
+            <input type="text"  formControlName="cargo"  class="form-control"   required> 
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom05" class="form-label">Supervisor Inmediato</label>
+            <input type="text"  formControlName="supervisor_Inmediato" class="form-control"   required> 
+        </div>
+        
+        <div class="col-12">
+            <button    class="btn btn-primary" type="submit">Registrar</button>
+        </div>
+    </form>
+
+</div>
