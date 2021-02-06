@@ -1,3 +1,4 @@
+using BackEnd.Core.Helpers;
 using BackEnd.Core.Interfaces;
 using BackEnd.Core.Services;
 using BackEnd.Infrastructure.Data;
@@ -61,8 +62,10 @@ namespace BackEnd.Api
 
             services.AddTransient<IDepartamentoRepository, DepartamentoRepository>();
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
-            services.AddTransient<IDepartamentoService, DepartamentoService>();
+            services.AddTransient<IDepartamentoService, DepartamentoService>(); 
             services.AddTransient<IUsuarioService, UsuarioService>();
+            services.AddTransient<IConvertHelper, ConvertHelper>();
+
 
 
 

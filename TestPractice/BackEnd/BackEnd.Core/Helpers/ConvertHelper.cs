@@ -14,6 +14,22 @@
             };
         }
 
+        public Usuario ToUsuario(UsuarioDto usuario)
+        {
+            return new Usuario
+            {
+                Apellidos = usuario.Apellidos,
+                Cargo = usuario.Cargo,
+                Cedula = usuario.Cedula,
+                DepartamentoId = usuario.DepartamentoId,
+                Fecha_Nacimiento = usuario.Fecha_Nacimiento,
+                Genero = usuario.Genero,
+                Id = usuario.Id,
+                Nombres = usuario.Nombres,
+                Supervisor_Inmediato = usuario.Supervisor_Inmediato,
+            };
+        }
+
         public UsuarioDto ToUsuarioDto(Usuario usuario)
         {
             return new UsuarioDto

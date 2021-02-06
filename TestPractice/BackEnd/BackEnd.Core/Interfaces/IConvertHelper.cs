@@ -2,10 +2,12 @@
 {
     using BackEnd.Core.DTOs;
     using BackEnd.Core.Entities;
-    interface IConvertHelper
+   public interface IConvertHelper
     {
         UsuarioDto ToUsuarioDto(Usuario usuario);
 
         DepartamentoDto ToDepartamentoDto(Departamento departamento);
+
+        Usuario ToUsuario(UsuarioDto usuario);
     }
 }

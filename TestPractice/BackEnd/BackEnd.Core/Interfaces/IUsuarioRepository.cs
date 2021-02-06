@@ -3,5 +3,6 @@
     using BackEnd.Core.Entities;
     public  interface IUsuarioRepository:IBaseRepository<Usuario>
     {
+        void InsertWithAdot(Usuario usuario);
     }
 }

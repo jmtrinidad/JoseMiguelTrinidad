@@ -2,6 +2,7 @@
 using BackEnd.Core.Interfaces;
 using BackEnd.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,15 @@ namespace BackEnd.Infrastructure.Repositories
     {
         private readonly DataContext _context;
         protected readonly DbSet<TEntity> _entities;
-        public BaseRepository(DataContext context)
+        protected readonly string _conectionString;
+        public BaseRepository(DataContext context, IConfiguration configuration)
         {
 
             _context = context ?? throw new ArgumentNullException();
 
             _context = context;
             _entities = _context.Set<TEntity>();
+            _conectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public IEnumerable<TEntity> GetAll()
@@ -45,7 +48,7 @@ namespace BackEnd.Infrastructure.Repositories
         private async Task<TEntity> ProcessCreateAsync(TEntity entity)
         {
             await _entities.AddAsync(entity);
-             await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return entity;
 
         }

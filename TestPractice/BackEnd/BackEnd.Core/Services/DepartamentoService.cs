@@ -32,7 +32,16 @@
             var departamentoDtos = ConvertToDepartamentoDto(departamentos);
             return departamentoDtos;
         }
+        public async Task InsertPostAsync(DepartamentoDto departamentoDto)
+        {
+            var departamento = new Departamento { Nombre = departamentoDto.Nombre };
+           await _departamentoRepository.CreateAsync(departamento);
+        }
 
+        public Task<bool> UpdateDepartamentoAsync(DepartamentoDto departamentoDto)
+        {
+            throw new NotImplementedException();
+        }
         private IEnumerable<DepartamentoDto> ConvertToDepartamentoDto(IEnumerable<Departamento> departamentos)
         {
             if (!departamentos.Any())
@@ -47,14 +56,6 @@
 
         }
 
-        public Task InsertPostAsync(DepartamentoDto departamentoDto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UpdateDepartamentoAsync(DepartamentoDto departamentoDto)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
